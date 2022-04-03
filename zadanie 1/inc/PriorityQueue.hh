@@ -57,7 +57,21 @@ void PriorityQueue<T>::enqueue(const T & _data, const int & _priority)
             new_node->prev = nullptr; //bo nie ma dalszych elementów
             tail = new_node;    //nowy element staje sie nowym "ogonem"
         }
-        
+        else    //umieszczanie elementu przed znalezionym miejscem
+        {
+            new_node->next = temp->next;
+            new_node->prev = temp;
+            if (new_node->next != nullptr)
+            {   //jesli przed nowo dodanym elementem znajduje sie jakis inny
+                new_node->next->prev = new_node; //to "informujemy" go o tym
+            }
+            new_node->prev->next = new_node;
+            if (head == tail || _priority < head->priority)
+            {
+                head = new_node;
+            }
+            
+        }
     }
     Size++;
 }
@@ -66,4 +80,20 @@ template <typename T>
 T PriorityQueue<T>::min() const
 {
     return head->data;
+}
+
+template <typename T>
+T PriorityQueue<T>::removeMin()
+{
+    Node *temp = nullptr; //nowy tymczasowy wezel 
+    temp = head;
+    T temp_data = temp->data;
+    head = head->prev; 
+    free(temp);
+    if (head == nullptr) //przypadek kiedy to byl ostatni element w kolejce
+    {
+        tail = nullptr;
+    }
+    Size--;
+    return temp_data;
 }
