@@ -19,7 +19,7 @@ int main() {
     }
     std::shuffle(&randomized[0], &randomized[10], rng);
 
-    std::cout << "> wpisz wiadomosc:" << std::endl << "> ";
+    std::cout << "> wpisz wiadomosc do wyslania:" << std::endl << "> ";
     std::getline(std::cin,message_to_send);
     
     int package_lenght = message_to_send.size()/n;
@@ -43,7 +43,7 @@ int main() {
         final_message = final_message+ a.removeMin(); //usuwamy elementy drukujac je az do konca kolejki
     }
     
-    std::cout << "> wiadomosc bez sortowania:" << std::endl << "> ";
+    std::cout << "> wiadomosc w kolejnosci w jakiej przyszly pakiety:" << std::endl << "> ";
     std::cout << sended_message << std::endl;
     std::cout << "> wiadomosc z priorytetyzacja pakietow:" << std::endl << "> ";
     std::cout << final_message << std::endl;
