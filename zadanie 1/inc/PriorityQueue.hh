@@ -20,11 +20,17 @@ private:
 
 public:
 
+    //konstruktor nowej kolejki priorytetowej
     PriorityQueue(): head(nullptr), tail(nullptr), Size(0) {};
+    //metoda zwracająca rozmiar kolejki
     int size() const {return Size;};
+    //metoda sprawdzająca czy kolejka jest pusta
     bool is_empty() const {return (head == nullptr);};
+    //metoda zwracajaca element o najwyzszym priorytecie
     T min() const;
+    //metoda usuwajaca i zwracajaca element o najwyzszym priorytecie (pop)
     T removeMin();
+    //metoda do zakolejkowania nowego elementu
     void enqueue(const T & _data, const int & _priority);
 };
 
@@ -67,9 +73,9 @@ void PriorityQueue<T>::enqueue(const T & _data, const int & _priority)
             }
             new_node->prev->next = new_node;
             if (head == tail || _priority < head->priority)
-            {
-                head = new_node;
-            }
+            {   //przypadek gdy kolejka ma tylko jeden element o nizszym priorytecie
+                head = new_node;    //lub gdy nowo dodany element ma nizszy priorytet
+            }                       //niz sam poczatek
             
         }
     }
