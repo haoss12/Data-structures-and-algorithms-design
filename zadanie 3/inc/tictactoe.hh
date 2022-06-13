@@ -89,7 +89,7 @@ void TicTacToe::print() const
             std::cout << " |";
 
         }
-        std::cout << "  | " << i;   .//numeracja kolumn
+        std::cout << "  | " << i;   //numeracja kolumn
         std::cout << std::endl;
 
         if (i < (size - 1))
