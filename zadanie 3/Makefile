@@ -13,7 +13,7 @@ ${TRGDIR}tictactoe: ${OBJ} ${OBJ}/main.o
 ${OBJ}:
 	mkdir ${OBJ}
 
-${OBJ}/main.o: ${SRC}/main.cpp
+${OBJ}/main.o: ${SRC}/main.cpp ${INC}/tictactoe.hh
 	g++ -c ${FLAGS} -o ${OBJ}/main.o ${SRC}/main.cpp
 
 
